@@ -1,0 +1,925 @@
+var data = {
+
+	"sentenceType": [
+		{	"value": "wantSentence",
+			"weight": 100
+		},
+		{
+			"value": "loveSentence",
+			"weight": 1
+		},
+		{
+			"value": "br",
+			"weight": 2
+		},
+	],
+
+	"wantSentenceType": [
+		{	"value": "I want to |~privateVerb| in |@hotel|.",
+			"weight": 4
+		},
+		{	"value": "I want to |~privateVerb| in |=privatePlace|.",
+			"weight": 4
+		},
+		{	"value": "I want to |~hotelVerb| in |@hotel|.",
+			"weight": 1
+		},
+		{	"value": "I want to |~hotelVerb| in |@hotel| |~cityModifier| |@city|.",
+			"weight": 1
+		},
+		{	"value": "I want to |~hotelVerb| at the |=hotel| in |@city|.",
+			"weight": 1
+		},
+		{	"value": "I want to |~privateVerb| in |@hotel| |~cityModifier| |@city|, |~transition| |~activity|.",
+			"weight": 1
+		},
+		{	"value": "I want to |~privateVerb| at the |=hotel| |~cityModifier| |@city|, |~transition| |~activity|.",
+			"weight": 1
+		},
+		{	"value": "I want to |~privateVerb| at the |=hotel| |~cityModifier| |@city|, |~transition| go to |~event|.",
+			"weight": 1
+		},
+		{	"value": "I want |~carVerb| |~weDrive| |~toOrThrough| |@city|.",
+			"weight": 3
+		},
+		{	"value": "I want |~carVerb| |~weDrive| |~toOrThrough| |@city| to |~event|.",
+			"weight": 3
+		},
+		{	"value": "I want to hold your hand in |@car|.",
+			"weight": 1
+		},
+		{	"value": "I want to kiss you driving on the |=road|.",
+			"weight": 1
+		},
+		{	"value": "I want to |~publicVerb| |~establishmentMod| |@establishment| in |@city|.",
+			"weight": 3
+		},
+		{	"value": "I want to go to |@establishment| with you and then go to |@establishment| and then |@establishment|.",
+			"weight": 1
+		},
+		{	"value": "I want to |~publicVerb| |~establishmentMod| |@establishment|.",
+			"weight": 1
+		},
+		{	"value": "I want to |~publicVerb| |~otherPlace| in |@city|.",
+			"weight": 3
+		},
+		{	"value": "I want to |~publicVerb| |~otherPlace|.",
+			"weight": 1
+		},
+		{	"value": "I want to |~publicVerb| |~otherPlace| in |@city|.",
+			"weight": 3
+		},
+		{	"value": "I want to |~privateVerb| on |@object| in |@city|.",
+			"weight": 3
+		},
+		{	"value": "I want to |~privateVerb| on |@object|.",
+			"weight": 1
+		},
+
+
+	],
+
+
+
+
+
+	"~inOrAt": [
+		{	"value": "in",
+			"weight": 10
+		},
+		{	"value": "at",
+			"weight": 1
+		},
+	],
+
+	"~cityModifier": [
+		{	"value": "in",
+			"weight": 15
+		},
+		{	"value": "in downtown",
+			"weight": 5
+		},
+		{	"value": "in the suburbs of",
+			"weight": 5
+		},
+		{	"value": "somewhere near",
+			"weight": 5
+		},
+	],
+
+	"~transition": [
+		{	"value": "before we",
+			"weight": 5
+		},
+		{	"value": "after we",
+			"weight": 5
+		},
+		{	"value": "and then",
+			"weight": 15
+		},
+	],
+
+	"~toOrThrough": [
+		{	"value": "to",
+			"weight": 2
+		},
+		{	"value": "through",
+			"weight": 3
+		}
+	],
+
+	"~weDrive": [
+		{	"value": "while we drive",
+			"weight": 3
+		},
+		{	"value": "as we drive",
+			"weight": 1
+		},
+		{	"value": "while driving",
+			"weight": 3
+		}
+	],
+
+
+	"~establishmentMod": [
+		{	"value": "in",
+			"weight": 15
+		},
+		{	"value": "in front of",
+			"weight": 3
+		},
+		{	"value": "behind",
+			"weight": 5
+		},
+		{	"value": "in the bathroom of",
+			"weight": 3
+		},
+		{	"value": "on the roof of",
+			"weight": 1
+		}
+	],
+
+
+
+
+
+	"@hotel": [
+		{	"value": "Best Western",
+			"weight": 2
+		},
+		{	"value": "Econolodge",
+			"weight": 1
+		},
+		{	"value": "Hyatt",
+			"weight": 1
+		},
+		{	"value": "Mariott",
+			"weight": 3
+		},
+		{	"value": "Radisson",
+			"weight": 3
+		},
+		{	"value": "Residence Inn",
+			"weight": 1
+		},
+		{	"value": "Rodeway Inn",
+			"weight": 1
+		},
+		{	"value": "Sheraton",
+			"weight": 2
+		},
+		{	"value": "Westin",
+			"weight": 1
+		},
+		{	"value": "W Hotel",
+			"weight": 2
+		},
+		{	"value": "Sleep Inn",
+			"weight": 1
+		},
+		{	"value": "Doubletree",
+			"weight": 1
+		},
+		{	"value": "hostel",
+			"weight": 2
+		},
+		{	"value": "Hampton Inn",
+			"weight": 2
+		},
+		{	"value": "All Seasons",
+			"weight": 2
+		},
+		{	"value": "Motel 6",
+			"weight": 2
+		},
+		{	"value": "Four Points by Sheraton",
+			"weight": 1
+		},
+		{	"value": "Red Roof Inn",
+			"weight": 1
+		},
+		{	"value": "Holiday Inn",
+			"weight": 2
+		},
+	],
+
+	"@car": [
+		{	"value": "Honda Accord",
+			"weight": 2
+		},
+		{	"value": "Audi A6",
+			"weight": 1
+		},
+		{	"value": "Jeep",
+			"weight": 1
+		},
+		{	"value": "Corvette",
+			"weight": 1
+		},
+		{	"value": "Volvo",
+			"weight": 3
+		},
+		{	"value": "Jetta",
+			"weight": 3
+		},
+		{	"value": "VW Rabbit",
+			"weight": 1
+		},
+		{	"value": "Land Rover",
+			"weight": 1
+		},
+		{	"value": "Audi A4",
+			"weight": 2
+		},
+		{	"value": "Ford F150",
+			"weight": 1
+		},
+		{	"value": "Prius",
+			"weight": 2
+		},
+		{	"value": "Lexus",
+			"weight": 1
+		},
+		{	"value": "Nissan",
+			"weight": 1
+		},
+		{	"value": "Honda Civic",
+			"weight": 2
+		}
+	],
+
+
+	"@road": [
+		{	"value": "I-90",
+			"weight": 2
+		},
+		{	"value": "I-5",
+			"weight": 1
+		},
+		{	"value": "I-55",
+			"weight": 1
+		},
+		{	"value": "I-80",
+			"weight": 1
+		}
+	],
+
+	"@establishment": [
+		{	"value": "time-share",
+			"weight": 2
+		},
+		{	"value": "Olive Garden",
+			"weight": 2
+		},
+		{	"value": "Chili's",
+			"weight": 1
+		},
+		{	"value": "Red Lobster",
+			"weight": 1
+		},
+		{	"value": "Cheesecake Factory",
+			"weight": 1
+		},
+		{	"value": "Applebee's",
+			"weight": 1	 
+        },
+		{	"value": "Qdoba",
+			"weight": 1
+		},
+		{	"value": "Chipotle",
+			"weight": 1
+		},
+		{	"value": "Starbucks",
+			"weight": 2
+		},
+		{	"value": "Gamestop",
+			"weight": 1
+        },
+        {	"value": "Home Depot",
+			"weight": 1
+		},
+		{	"value": "Hobby Lobby",
+			"weight": 1
+		},
+		{	"value": "24 Hour Fitness",
+			"weight": 1
+		},
+		{	"value": "Planned Parenthood",
+			"weight": 2	 
+            },
+		{	"value": "CVS",
+			"weight": 1
+		},
+		{	"value": "Quizno's",
+			"weight": 1
+		},
+		{	"value": "Bed Bath and Beyond",
+			"weight": 2
+		},
+		{	"value": "Best Buy",
+			"weight": 1
+        },
+        {	"value": "Staples",
+			"weight": 1
+		},
+		{	"value": "Office Depot",
+			"weight": 1
+		},
+		{	"value": "TJ Maxx",
+			"weight": 1
+		},
+		{	"value": "Shopko",
+			"weight": 1
+		},
+		{	"value": "Wal-Mart",
+			"weight": 1	 
+        },
+		{	"value": "KMart",
+			"weight": 1
+		},
+		{	"value": "Target",
+			"weight": 1
+		},
+		{	"value": "Costco",
+			"weight": 1
+		},
+		{	"value": "Sam's Club",
+			"weight": 1
+            },
+            {	"value": "Payless ShoeSource",
+			"weight": 1
+		},
+		{	"value": "LensCrafters",
+			"weight": 2
+		},
+		{	"value": "Duane Reade",
+			"weight": 1
+		},
+		{	"value": "Rite Aid",
+			"weight": 1
+		},
+		{	"value": "Walgreens",
+			"weight": 1	 
+            },
+		{	"value": "Foot Locker",
+			"weight": 1
+		},
+		{	"value": "Trader Joe's",
+			"weight": 1
+		},
+		{	"value": "Subway",
+			"weight": 2
+		},
+		{	"value": "Pinkberry",
+			"weight": 1
+		},
+		{	"value": "American Legion post",
+			"weight": 2
+		},
+		{	"value": "assisted living facility",
+			"weight": 1
+		},
+		{	"value": "sports bar",
+			"weight": 2
+		},
+		{	"value": "Irish pub",
+			"weight": 1	 
+            },
+		{	"value": "converted church",
+			"weight": 1
+		},
+		{	"value": "teahouse",
+			"weight": 1
+		},
+		{	"value": "tanning salon",
+			"weight": 1
+		},
+		{	"value": "ice rink",
+			"weight": 1
+            },
+            {	"value": "chiropractor's office",
+			"weight": 1
+		},
+		{	"value": "strip club",
+			"weight": 2
+		},
+		{	"value": "dive bar",
+			"weight": 3
+		},
+		{	"value": "parking garage",
+			"weight": 3
+		},
+		{	"value": "dog park",
+			"weight": 2	 
+            },
+		{	"value": "steakhouse",
+			"weight": 1
+		},
+		{	"value": "tent",
+			"weight": 3
+		},
+		{	"value": "convention center",
+			"weight": 1
+		},
+		{	"value": "condo",
+			"weight": 5
+            },
+            {	"value": "pawn shop",
+			"weight": 2
+		},
+		{	"value": "cash advance place",
+			"weight": 1
+		},
+		{	"value": "body shop",
+			"weight": 1
+		},
+		{	"value": "cigar store",
+			"weight": 1
+		},
+		{	"value": "apartment complex",
+			"weight": 5	 
+            },
+		{	"value": "ranch style home",
+			"weight": 1
+		},
+		{	"value": "McMansion",
+			"weight": 4
+		},
+		{	"value": "shopping mall",
+			"weight": 4
+		},
+		{	"value": "hookah lounge",
+			"weight": 3
+         },
+            {	"value": "indie movie theater",
+			"weight": 2
+		},
+		{	"value": "travel agency",
+			"weight": 1
+		},
+		{	"value": "Thai restaurant",
+			"weight": 1
+		},
+		{	"value": "diner",
+			"weight": 3
+		},
+		{	"value": "independent bookstore",
+			"weight": 2
+		},
+		{	"value": "public library",
+			"weight": 2
+		},
+		{	"value": "gallery",
+			"weight": 3	 
+            },
+		{	"value": "food court",
+			"weight": 3
+		},
+		{	"value": "liquor store",
+			"weight": 3
+		},
+		{	"value": "community college",
+			"weight": 3
+		},
+		{	"value": "thrift shop",
+			"weight": 3
+		},
+		{	"value": "record store",
+			"weight": 3
+		},
+		{	"value": "mini-mall",
+			"weight": 3
+            },
+    		{	"value": "head shop",
+			"weight": 2
+		},
+		{	"value": "skate shop",
+			"weight": 1
+		},
+		{	"value": "convenience store",
+			"weight": 3	 
+            },
+		{	"value": "planetarium",
+			"weight": 2
+		},
+		{	"value": "aquarium",
+			"weight": 1
+		},
+		{	"value": "county jail",
+			"weight": 2		
+		},
+		{	"value": "Mormon church",
+			"weight": 1
+		},
+		{	"value": "Lutheran church",
+			"weight": 1
+		},
+		{	"value": "Catholic Church",
+			"weight": 1
+		},
+	    {	"value": "Unitarian Church",
+			"weight": 1	 
+        },
+		{	"value": "Methodist Church",
+			"weight": 1
+		},
+		{	"value": "Church of Scientology",
+			"weight": 2
+		},
+        {	"value": "IKEA",
+			"weight": 4
+		},
+	],
+
+	"@privatePlace": [
+        {	"value": "a shower",
+			"weight": 3
+		},
+		{	"value": "your childhood bedroom",
+			"weight": 3
+		},
+        {	"value": "your parent's home office",
+			"weight": 5
+		},
+		{	"value": "your college dorm room",
+			"weight": 3
+		},
+		{	"value": "your apartment",
+			"weight": 3
+		},
+		{	"value": "a karaoke booth",
+			"weight": 3
+		},
+		{	"value": "a walk-in closet",
+			"weight": 1
+		},
+		{	"value": "a home gym",
+			"weight": 1	 
+            },
+		{	"value": "a home studio",
+			"weight": 1
+		},
+		{	"value": "a home theater",
+			"weight": 1
+		},
+		{	"value": "a stairwell",
+			"weight": 3
+		},
+		{	"value": "a backyard",
+			"weight": 3
+		},
+		{	"value": "an alley",
+			"weight": 3	 
+        },
+
+		],
+
+	"@object": [
+		{	"value": "fold out couch",
+			"weight": 3
+		},
+		{	"value": "futon",
+			"weight": 3
+        },
+        {	"value": "bunk bed",
+			"weight": 2
+		},
+		{	"value": "pool table",
+			"weight": 1
+		},
+		{	"value": "air mattress",
+			"weight": 3
+		},
+		{	"value": "waterbed",
+            "weight": 3
+		},
+        {	"value": "Sleep Number Bed",
+            "weight": 1
+		},
+        {	"value": "mattress on the floor",
+            "weight": 1
+		},
+	],
+
+
+
+	"~publicVerb": [
+		{	"value": "kiss you",
+			"weight": 8
+		},
+		{	"value": "hold hands with you",
+			"weight": 2
+		},
+		{	"value": "get drunk with you",
+			"weight": 2
+		},
+		{	"value": "be high with you",
+			"weight": 1
+		},
+		{	"value": "people watch with you",
+			"weight": 2
+		},
+		{	"value": "share Skittles with you",
+			"weight": 1
+		},
+		{	"value": "share Snickers with you",
+			"weight": 1
+		},
+		{	"value": "do a crossword with you",
+			"weight": 1
+		},
+	],
+
+
+	"~privateVerb": [
+		{	"value": "kiss you",
+			"weight": 4
+		},
+		{	"value": "fuck you",
+			"weight": 5
+		},
+		{	"value": "spoon you",
+			"weight": 1
+		},
+		{	"value": "touch you",
+			"weight": 1
+		},
+
+	],
+
+	"~hotelVerb": [
+		{	"value": "fuck you",
+			"weight": 20
+		},
+		{	"value": "hold your hand while we watch TV",
+			"weight": 1
+		},
+		{	"value": "take a shower with you",
+			"weight": 1
+		},
+		{	"value": "pass out with you",
+			"weight": 2
+		},
+		{	"value": "do coke with you",
+			"weight": 1
+		},
+		{	"value": "sing 'Climax' by Usher with you",
+			"weight": 1
+		},
+		{	"value": "sing with you",
+			"weight": 2
+		},
+		{	"value": "kiss you",
+			"weight": 10
+		},
+		{	"value": "get drunk with you",
+			"weight": 1
+		},
+		{	"value": "cry with you",
+			"weight": 2
+		},
+		{	"value": "eat minibar gummy bears with you",
+			"weight": 1
+		},
+		{	"value": "come on your stomach",
+			"weight": 1
+		},
+		{	"value": "stroke your legs",
+			"weight": 1
+		},
+		{	"value": "rub aloe on your sunburn",
+			"weight": 1
+		},
+	],
+
+	"~activity": [
+		{	"value": "watch the sunset together",
+			"weight": 3
+		},
+		{	"value": "go on a hike together",
+			"weight": 1
+		},
+		{	"value": "get a tan in someone's backyard",
+			"weight": 1
+		},
+		{	"value": "go swimming",
+			"weight": 2
+		},
+		{	"value": "drink wine at a cafe outside",
+			"weight": 1
+		},
+		{	"value": "smoke weed in a park",
+			"weight": 1
+		},
+		{	"value": "watch the sunrise",
+			"weight": 3
+		}
+	],
+
+	"~carVerb": [
+		{	"value": "to kiss you",
+			"weight": 6
+		},
+		{	"value": "you to give me road head",
+			"weight": 1
+		},
+		{	"value": "to get sick of the radio with you",
+			"weight": 2
+		},
+		{	"value": "to listen to the radio with you",
+			"weight": 2
+		},
+		{	"value": "to roll down the window so you can smoke",
+			"weight": 2
+		},
+		{	"value": "to watch you get drunk in the passenger seat",
+			"weight": 1
+		},
+		{	"value": "to eat drive-thru with you",
+			"weight": 2
+		},
+		{	"value": "to sleep at a rest stop with you",
+			"weight": 1
+		},
+		{	"value": "to have car sex with you",
+			"weight": 1
+		},
+	],
+
+	"~event": [
+		{	"value": "a county fair",
+			"weight": 1
+		},
+		{	"value": "an AA meeting",
+			"weight": 1
+		},
+		{	"value": "a Bat Mitzvah",
+			"weight": 1
+		},
+		{	"value": "a house show",
+			"weight": 1
+		},
+		{	"value": "a boxing match",
+			"weight": 1
+		},
+		{	"value": "a party",
+			"weight": 1
+		},
+		{	"value": "a reading",
+			"weight": 1
+		},
+		{	"value": "a BBQ",
+			"weight": 1
+		},
+		{	"value": "a track meet",
+			"weight": 1
+		},
+		{	"value": "a one-act play",
+			"weight": 1
+		},
+		{	"value": "an auto show",
+			"weight": 1
+		}
+	],
+
+
+	"~otherPlace": [
+		{	"value": "under the slides in a playground",
+			"weight": 2
+		},
+		{	"value": "on a high school football field",
+			"weight": 1
+        },
+        {	"value": "in a high school locker room",
+			"weight": 1
+		},
+		{	"value": "in a high school cafeteria",
+			"weight": 1
+		},
+		{	"value": "on a high school driving range",
+			"weight": 1
+		},
+		{	"value": "in a high school auditorium",
+			"weight": 1
+		},
+		{	"value": "in a high school gymnasium",
+			"weight": 	1 
+        },
+        {	"value": "in a cemetery",
+			"weight": 5
+        },
+        {	"value": "in a waterpark",
+			"weight": 2
+        },
+	    {	"value": "on the lawns of an office park",
+			"weight": 4
+		},
+		{	"value": "in a warehouse",
+			"weight": 3
+		},
+		{	"value": "in an abandoned steel mill",
+			"weight": 2
+		},
+		{	"value": "in an abandoned cement factory",
+			"weight": 2	 
+            },
+		{	"value": "in a vacant lot",
+			"weight": 3
+		},
+            {	"value": "at a farmers' market",
+			"weight": 3
+		},
+            {	"value": "in a gazebo",
+			"weight": 3
+		},
+            {	"value": "in a shower",
+			"weight": 5
+		},
+		{	"value": "in a hot tub",
+			"weight": 3
+		},
+		{	"value": "in someone's basement",
+			"weight": 3
+		},
+		{	"value": "in the waiting room of a hospital",
+			"weight": 2
+		},
+		{	"value": "in a co-ed steam room",
+			"weight": 1	 
+            },
+		{	"value": "in a supply closet",
+			"weight": 3
+		},
+		{	"value": "in a hospital room",
+			"weight": 1
+		},
+		{	"value": "in a loft apartment",
+			"weight": 4
+		},
+		{	"value": "in a coffee shop",
+			"weight": 2
+            },
+            {	"value": "in a teacher's lounge",
+			"weight": 1
+		},
+		{	"value": "in an elevator",
+			"weight": 3
+		},
+		{	"value": "at a swimming pool",
+			"weight": 2
+		},
+		{	"value": "in a model home",
+			"weight": 1
+		},
+		{	"value": "in a taxi",
+			"weight": 3
+		},
+		{	"value": "on a hammock",
+			"weight": 1
+            },
+            {	"value": "in an Uber",
+			"weight": 2
+		},
+
+
+		],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+/*
+	I want to have a day where we , , , , in (city).
+	
+*/
